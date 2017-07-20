@@ -1,8 +1,17 @@
+'use strict';
+
+//////////////////////////////////////////////////////////////////////////
+///////////////// Define Constants for Contact App //////////////////////
+/////////////////    server side 'in memory' db    //////////////////////
+////////////////////////////////////////////////////////////////////////
+
 const clone = require('clone')
 const config = require('./config')
 
+// unit test db
 const db = {}
 
+// unit test data
 const defaultData = {
   contacts: [
     {
@@ -26,6 +35,7 @@ const defaultData = {
   ]
 }
 
+// unit test db functions
 const get = (token) => {
   let data = db[token]
 
