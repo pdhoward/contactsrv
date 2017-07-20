@@ -1,5 +1,10 @@
 
-// Backend http server
+'use strict';
+/////////////////////////////////////////////////////
+////////  		unit test server               ///////
+///////         xio labs v 1.2.0            ///////
+//////////////////////////////////////////////////
+
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -12,6 +17,7 @@ const app = express()
 app.use(express.static('public'))
 app.use(cors())
 
+// help doc
 app.get('/', (req, res) => {
   const help = `
   <pre>
@@ -32,6 +38,7 @@ app.get('/', (req, res) => {
   res.send(help)
 })
 
+// simple auth test
 app.use((req, res, next) => {
   const token = req.get('Authorization')
 
@@ -45,6 +52,7 @@ app.use((req, res, next) => {
   }
 })
 
+// api catalogue
 app.get('/contacts', (req, res) => {
   res.send(contacts.get(req.token))
 })
@@ -65,6 +73,7 @@ app.post('/contacts', bodyParser.json(), (req, res) => {
   }
 })
 
+// spin up http server
 app.listen(config.port, () => {
   console.log('Server listening on port %s, Ctrl+C to stop', config.port)
 })
