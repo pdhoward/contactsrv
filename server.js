@@ -40,10 +40,7 @@ app.get('/', (req, res) => {
 // simple auth test
 app.use((req, res, next) => {
   const token = req.get('Authorization')
-  console.log("DB SERVER ACTION FIRED")
-  console.log(req.url)
-  console.log(req.params)
-  console.log(req.body)
+
   if (token) {
     req.token = token
     next()
