@@ -45,14 +45,17 @@ app.use((req, res, next) => {
     req.token = token
     next()
   } else {
-    res.status(403).send({
-      error: 'Please provide an Authorization header to identify yourself (can be whatever you want)'
-    })
+    console.log("Temp Workaround on Server Auth" )
+    req.token = "123456"
+    next()
+    //res.status(403).send({
+    //  error: 'Please provide an Authorization header to identify yourself (can be whatever you want)'
+    //})
   }
 })
 
 // api catalogue
-app.get('/contacts', (req, res) => {
+app.get('/contacts', (req, res) => {  
   res.send(contacts.get(req.token))
 })
 
