@@ -49,7 +49,7 @@ const verify = (token, username, password) => {
     isLoggedIn: true
   }
 
-  get(token).permissions.map((p) = {
+  get(token).permissions.map((p) => {
     if (p.role == username) {
       p.isLoggedIn = true
       return {isLoggedIn: true}
@@ -58,7 +58,7 @@ const verify = (token, username, password) => {
 
   get(token).permissions.push(roleObj)
 
-  return (isLoggedIn: true}
+  return {isLoggedIn: true}
 }
 
 
