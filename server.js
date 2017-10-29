@@ -80,7 +80,7 @@ app.post('/login', bodyParser.json(), (req, res) => {
 
   if (username && password) {
     login.verify(req.token, username, password).then((result) =>
-          console.log("Status of user ", username, result.isLoggedIn))
+          console.log("Login Result ", username, result.isLoggedIn))
     res.status(200).send(result)
   } else {
     res.status(403).send({
