@@ -10,7 +10,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const config = require('./config')
 const contacts = require('./contacts')
-const login = require('./login')
 
 const app = express()
 
@@ -73,21 +72,6 @@ app.post('/contacts', bodyParser.json(), (req, res) => {
   }
 })
 
-//  login functions
-// needs to be refactored for validation, authentication
-app.post('/login', bodyParser.json(), (req, res) => {
-  const { username, password } = req.body
-
-  if (username && password) {
-    login.verify(req.token, username, password).then((result) =>
-          console.log("Login Result ", username, result.isLoggedIn))
-    res.status(200).send(result)
-  } else {
-    res.status(403).send({
-      error: 'Please provide both a username and password'
-    })
-  }
-})
 
 // spin up http server
 app.listen(config.port, () => {
